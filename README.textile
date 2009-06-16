@@ -1,0 +1,7 @@
+h1. Clear Cache Module
+
+h2. Parameters
+
+* text: the text displayed for the clear-cache link. Defaults to "Clear Cache"
+* class: the class of the clear-cache link. Defaults to "clear-cache"
+* type: the type of cache to be cleared. Possible types include page, db, tag, relationships, and all. Defaults to "all"
