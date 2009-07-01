@@ -1,7 +1,11 @@
 (function() {
   if (typeof jQuery == 'undefined') {
+    var otherLib = typeof $ == 'function' ? true : false;
     getScript('http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js', function() { 
       if (typeof jQuery != 'undefined') {
+        if (otherLib) {
+          jQuery.noConflict();
+        }
         return clearCache();
       }
     });
@@ -10,13 +14,14 @@
   }
   
   function clearCache() {
-    $(document).ready(function() {
+    
+    jQuery(document).ready(function($) {
+      var clearText = $('#ks-clear-cache').html();
       $('#ks-clear-cache').click(function() {
         var timer = new Date(),
             clearlink = this,
             clearlinkHref = clearlink.href;
-            $clearlink = $(this).addClass('loading'),
-            clearText = $clearlink.html();
+            $clearlink = $(this).addClass('loading');
             $clearlink.html('Clearing Cache...').attr('href', '');
         $.post(clearlinkHref, function() {
           if (new Date() - timer < 1000) {
@@ -35,7 +40,7 @@
     lnk.removeClass('loading').html(txt).attr('href', hrf);
   }
   
-  // more or less stolen form jquery core and adapted by paul irish
+  // more or less stolen from jquery core and adapted by paul irish
   function getScript(url, success){
     var script=document.createElement('script');
     script.src=url;
