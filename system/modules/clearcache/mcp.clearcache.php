@@ -63,9 +63,10 @@ class Clearcache_CP {
     $FNS->clear_caching($clearwhat, '', TRUE);
     
     $DSP->title = $LANG->line('clearcache_module_name');
-    $DSP->crumb = $DSP->anchor(BASE.AMP.'C=modules'.AMP.'M=clearcache', $LANG->line('clear_the_cache'));
+    $DSP->crumb = $DSP->anchor(BASE.AMP.'C=modules'.AMP.'M=clearcache', $LANG->line('clearcache_module_name'));
     $DSP->crumb .= $DSP->crumb_item($LANG->line('clear_the_cache'));
-    $DSP->body .= $DSP->qdiv('itemWrapper', $LANG->line('cache_cleared'));
+    $DSP->body .= $DSP->qdiv('successBox', $DSP->qdiv('success', $LANG->line('cache_cleared')));
+    
   }
   // END
   
@@ -79,14 +80,30 @@ class Clearcache_CP {
     $DSP->title = $LANG->line('clearcache_module_name');
     $DSP->crumb = $LANG->line('clearcache_module_name');
     
-    $DSP->body .= $DSP->heading($LANG->line('clearcache_module_name'));
-    
-    $DSP->body .= $DSP->qdiv('itemWrapper', $DSP->heading($DSP->anchor(BASE.
-                                                                       AMP.'C=modules'.
-                                                                       AMP.'M=clearcache'.
-                                                                       AMP.'P=clear_cache', 
-                                                                       $LANG->line('clear_the_cache')),
-                                                                       5));
+    $DSP->body .= $DSP->qdiv('tableHeading', $LANG->line('clearcache_module_name'));  
+
+    $DSP->body	.=	$DSP->table('tableBorder', '0', '0', '100%').
+		$DSP->tr();
+
+    $DSP->body	.=	$DSP->td();
+    $DSP->body	.=	$DSP->td_c();
+
+    $DSP->body	.=	$DSP->tr_c();
+    $DSP->body	.=	$DSP->tr();
+
+    $DSP->body	.=	$DSP->td('tableCellTwo');
+    $DSP->body .= $DSP->qdiv('itemWrapper',
+    							$DSP->heading(
+    							$DSP->anchor(BASE.
+                               AMP.'C=modules'.
+                               AMP.'M=clearcache'.
+                               AMP.'P=clear_cache', 
+                               $LANG->line('clear_the_cache')),
+                               5));
+    $DSP->body	.=	$DSP->td_c();
+
+    $DSP->body	.=	$DSP->tr_c();
+    $DSP->body	.=	$DSP->table_c();
    }
    // END
 

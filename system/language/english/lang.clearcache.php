@@ -11,7 +11,7 @@ $L = array(
 'clear_the_cache' =>
 'Clear all caches',
 
-'cache_cleared_cp' =>
+'cache_cleared' =>
 'Your cache has been cleared.'
 );
 // end array
