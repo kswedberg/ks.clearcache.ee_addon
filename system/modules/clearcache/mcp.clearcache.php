@@ -30,7 +30,7 @@ if ( ! defined('EXT')) {
 
 class Clearcache_CP {
 
-    var $version    = '1.0.0.';
+    var $version    = '1.0.0';
     var $old_version  = '';
     var $module_name  = 'Clearcache';
     var $base     = '';
@@ -63,9 +63,9 @@ class Clearcache_CP {
     $FNS->clear_caching($clearwhat, '', TRUE);
     
     $DSP->title = $LANG->line('clearcache_module_name');
-    $DSP->crumb = $DSP->anchor(BASE.AMP.'C=modules'.AMP.'M=clearcache', $LANG->line('clearcache_module_name'));
+    $DSP->crumb = $DSP->anchor(BASE.AMP.'C=modules'.AMP.'M=clearcache', $LANG->line('clear_the_cache'));
     $DSP->crumb .= $DSP->crumb_item($LANG->line('clear_the_cache'));
-    $DSP->body .= $DSP->qdiv('itemWrapper', $LANG->line('clearcache_cache_cleared'));
+    $DSP->body .= $DSP->qdiv('itemWrapper', $LANG->line('cache_cleared'));
   }
   // END
   
@@ -85,7 +85,7 @@ class Clearcache_CP {
                                                                        AMP.'C=modules'.
                                                                        AMP.'M=clearcache'.
                                                                        AMP.'P=clear_cache', 
-                                                                       $LANG->line('clear_cache')),
+                                                                       $LANG->line('clear_the_cache')),
                                                                        5));
    }
    // END

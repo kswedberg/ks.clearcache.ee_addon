@@ -51,7 +51,7 @@ class Clearcache {
       
       $js = '<script type="text/javascript">';
       $js .= '(function() {var s = document.createElement("script"), b=document.getElementsByTagName("body")[0];';
-      $js .= 's.src = "/' . $cpurl . '/modules/clearcache/clearcache.js";';
+      $js .= 's.src = "/' . $cpurl . '/modules/clearcache/scripts/clearcache.js";';
       $js .= 'b.appendChild(s);';
       $js .= '})();</script>';
       

@@ -1,18 +1,18 @@
 <?php
   
 $L = array(
+
 'clearcache_module_name' => 
 'Clear Cache',
+
 'clearcache_module_description' => 
-'exp tag to create a link to send an ajax request for the all caches to be cleared.',
+'Adds a tag to clear cache from templates.',
 
-'clearcache' =>
-'Clear Cache',
+'clear_the_cache' =>
+'Clear all caches',
 
-'clear_cache' =>
-'Clear my cache',
-'clearcache_cache_cleared' =>
-'Your cache has been cleared'
+'cache_cleared_cp' =>
+'Your cache has been cleared.'
 );
 // end array
 
