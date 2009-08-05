@@ -12,32 +12,43 @@
   } else {
     return clearCache();
   }
-  
+  var delayedRestore;
   function clearCache() {
     
     jQuery(document).ready(function($) {
-      var clearText = $('#ks-clear-cache').html();
-      $('#ks-clear-cache').click(function() {
-        var timer = new Date(),
-            clearlink = this,
-            clearlinkHref = clearlink.href;
-            $clearlink = $(this).addClass('loading');
-            $clearlink.html('Clearing Cache...').attr('href', '');
-        $.post(clearlinkHref, function() {
-          if (new Date() - timer < 1000) {
-            setTimeout(function() {
-              restoreLink($clearlink, clearText, clearlinkHref);
-            }, 500);
-          } else {
-            restoreLink($clearlink, clearText, clearlinkHref);
-          }
+      
+      $('.clear-cache').each(function() {
+        var clearlink = this,
+            clearlinkHref = clearlink.href,
+            $clearlink = $(this);
+
+        $clearlink
+        .data('text', $clearlink.html())
+        .click(function() {
+          var timer = new Date();
+          $clearlink
+            .addClass('loading')
+            .html('Clearing Cache...')
+            .attr('href', '');
+
+          $.post(clearlinkHref, function() {
+            if (new Date() - timer < 1000) {
+              delayedRestore = setTimeout(function() {
+                restoreLink($clearlink, $clearlink.data('text'), clearlinkHref);
+              }, 500);
+            } else {
+              restoreLink($clearlink, $clearlink.data('text'), clearlinkHref);
+            }
+          });
+          return false;
         });
-        return false;
+        
       });
     });    
   }
   function restoreLink(lnk, txt, hrf) {
     lnk.removeClass('loading').html(txt).attr('href', hrf);
+    clearTimeout(delayedRestore);
   }
   
   // more or less stolen from jquery core and adapted by paul irish
