@@ -55,7 +55,7 @@
   function getScript(url, success){
     var script=document.createElement('script');
     script.src=url;
-    var body = document.getElementsByTagName('body')[0], 
+    var head = document.getElementsByTagName('head')[0], 
         done = false;
     
     // Attach handlers for all browsers
@@ -67,7 +67,7 @@
         success();
       }
     };
-    body.appendChild(script);
+    head.appendChild(script);
   }
   
 })();
